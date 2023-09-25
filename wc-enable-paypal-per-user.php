@@ -63,6 +63,9 @@ function enable_paypal_for_user( $available_gateways ) {
 	if ( isset( $available_gateways['paypal'] ) && 'yes' !== get_user_meta( $user, 'enable_paypal', true ) ) {
 		unset( $available_gateways['paypal'] );
 	}
+	if ( isset( $available_gateways['ppcp-gateway'] ) && 'yes' !== get_user_meta( $user, 'enable_paypal', true ) ) {
+		unset( $available_gateways['ppcp-gateway'] );
+	}
 
 	return $available_gateways;
 }
