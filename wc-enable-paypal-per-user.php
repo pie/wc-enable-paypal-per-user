@@ -54,6 +54,7 @@ add_action( 'edit_user_profile_update', __NAMESPACE__ . '\save_user_paypal_optio
 
 /**
  * Allow paypal payment gateway if user has been allowed access
+ * Currently only used for AMA, PPCP is added for Affiliates and is only used there so never needed for users
  *
  * @param  array $available_gateways
  * @return mixed
@@ -63,7 +64,7 @@ function enable_paypal_for_user( $available_gateways ) {
 	if ( isset( $available_gateways['paypal'] ) && 'yes' !== get_user_meta( $user, 'enable_paypal', true ) ) {
 		unset( $available_gateways['paypal'] );
 	}
-	if ( isset( $available_gateways['ppcp-gateway'] ) && 'yes' !== get_user_meta( $user, 'enable_paypal', true ) ) {
+	if ( isset( $available_gateways['ppcp-gateway'] ) ) {
 		unset( $available_gateways['ppcp-gateway'] );
 	}
 
